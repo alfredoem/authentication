@@ -23,6 +23,7 @@ class Install extends Command
     public function handle()
     {
         $this->installMigrations();
+        $this->updateAuthConfig();
 
         /*here copy migrations*/
        $this->comment('**********************************************');
@@ -40,6 +41,24 @@ class Install extends Command
             AUTH_PATH . '/resources/stubs/database/migrations/2015_09_25_191344_create_secusers_table.php',
             database_path('migrations/' . date('Y_m_d_His') .'create_secusers_table.php')
         );
+    }
+
+    /**
+     * Update the "auth" configuration file.
+     *
+     * @return void
+     */
+    protected function updateAuthConfig()
+    {
+        $path = config_path('auth.php');
+
+        file_put_contents($path, str_replace(
+            'users', 'SecUsers', file_get_contents($path)
+        ));
+
+        file_put_contents($path, str_replace(
+            'App\User::class', 'Alfredoem\Authentication\SecUser', file_get_contents($path)
+        ));
     }
 
 

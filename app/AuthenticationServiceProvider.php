@@ -61,10 +61,6 @@ class AuthenticationServiceProvider extends ServiceProvider
             define('AUTH_PATH', realpath(__DIR__ . '/../'));
         }
 
-        if (! class_exists('Authentication')) {
-            class_alias('Alfredoem\Authentication\Authentication', 'Authentication');
-        }
-
         if ($this->app->runningInConsole()) {
             $this->commands([Install::class]);
         }

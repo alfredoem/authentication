@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSecusersTable extends Migration
+class CreateSecUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,8 +20,8 @@ class CreateSecusersTable extends Migration
             $table->string('firstName', 50);
             $table->char('changePassword', 1);
             $table->dateTime('lastPasswordChange');
-            $table->tinyInteger('invalidAttempts', 3);
-            $table->tinyInteger('status', 3);
+            $table->tinyInteger('invalidAttempts', false);
+            $table->tinyInteger('status', false);
         });
     }
 

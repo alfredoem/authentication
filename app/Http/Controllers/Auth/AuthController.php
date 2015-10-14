@@ -1,6 +1,6 @@
 <?php namespace Alfredoem\Authentication\Http\Controllers\Auth;
 
-use Alfredoem\Authentication\SecUser;
+use Alfredoem\Authentication\SecUser as User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -36,6 +36,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+        \Config::set('auth.model', 'Alfredoem\Authentication\SecUser');
     }
 
     public function getLogin()

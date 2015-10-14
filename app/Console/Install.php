@@ -37,8 +37,8 @@ class Install extends Command
     protected function InstallMigrations()
     {
         copy(
-            AUTH_PATH . '/resources/stubs/database/migrations/2015_09_25_create_secusers_table.php',
-            database_path('migrations/2015_10_14_create_secusers_table.php')
+            AUTH_PATH . '/resources/stubs/database/migrations/2015_09_25_191344_create_secusers_table.php',
+            database_path('migrations/' . date('Y_m_d_His') .'create_secusers_table.php')
         );
     }
 

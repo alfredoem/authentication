@@ -1,4 +1,4 @@
-@extends('Authentication::template')
+@extends('Auth::template')
 
 @section('content')
 

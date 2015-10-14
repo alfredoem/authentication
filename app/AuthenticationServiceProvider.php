@@ -42,7 +42,7 @@ class AuthenticationServiceProvider extends ServiceProvider
 
     protected function defineResources()
     {
-        $this->loadViewsFrom(AUTH_PATH . '/resources/views', 'Authentication');
+        $this->loadViewsFrom(AUTH_PATH . '/resources/views', 'Auth');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([

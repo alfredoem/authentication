@@ -1,8 +1,6 @@
-<?php
+<?php namespace Alfredoem\Authentication\Http\Controllers\Auth;
 
-namespace App\Http\Controllers\Auth;
-
-use App\User;
+use Alfredoem\Authentication\SecUser;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -40,12 +38,10 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
-
     public function getLogin()
     {
-        return view('Auth::auth.authentication');
+        return view('Auth::auth.authenticate');
     }
-
 
 
     /**

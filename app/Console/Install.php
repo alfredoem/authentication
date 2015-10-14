@@ -11,7 +11,7 @@ class Install extends Command
     *
     * @var string
     */
-    protected $signature = 'Authentication:install {--force}';
+    protected $signature = 'Auth:install {--force}';
 
     /**
      * The console command description
@@ -22,24 +22,24 @@ class Install extends Command
 
     public function handle()
     {
-        /*$this->installMigrations();
+        $this->installMigrations();
 
         /*here copy migrations*/
-       /* $this->comment('**********************************************');
+       $this->comment('**********************************************');
         $this->comment('**************Authentication*****************');
         $this->comment('**********************************************');
         $this->comment('');
         if ($this->option('force') || $this->confirm('Would you like to run your database migrations?', 'yes')) {
             (new Process('php artisan migrate', base_path()))->setTimeout(null)->run();
-        }*/
+        }
     }
 
     protected function InstallMigrations()
     {
-        /*copy(
-            SKELETONPK_PATH . '/resources/stubs/database/migrations/2015_09_25_create_secusers_table.php',
-            database_path('migrations/2015_09_25_create_secusers_table.php')
-        );*/
+        copy(
+            AUTH_PATH . '/resources/stubs/database/migrations/2015_09_25_create_secusers_table.php',
+            database_path('migrations/2015_10_14_create_secusers_table.php')
+        );
     }
 
 

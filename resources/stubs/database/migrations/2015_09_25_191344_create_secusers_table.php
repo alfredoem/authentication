@@ -22,6 +22,7 @@ class CreateSecUsersTable extends Migration
             $table->dateTime('lastPasswordChange');
             $table->tinyInteger('invalidAttempts', false);
             $table->tinyInteger('status', false);
+            $table->rememberToken();
         });
     }
 

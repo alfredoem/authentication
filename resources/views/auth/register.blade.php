@@ -15,6 +15,7 @@
 				<div class="panel panel-default">
                 	<div class="panel-heading">Register</div>
                 	<div class="panel-body">
+                	@include('Auth::common.errors', ['form' => 'default'])
 
                 		<form method="POST" action="{{url('/register')}}">
                             {!! csrf_field() !!}

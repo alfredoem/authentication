@@ -60,6 +60,11 @@ class AuthController extends Controller
         ]);
     }
 
+    public function getRegister()
+    {
+        return view('Auth::auth.register');
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *

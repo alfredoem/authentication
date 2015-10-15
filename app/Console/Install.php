@@ -7,10 +7,10 @@ use Symfony\Component\Process\Process;
 class Install extends Command
 {
     /**
-    * The name and signature of the console command
-    *
-    * @var string
-    */
+     * The name and signature of the console command
+     *
+     * @var string
+     */
     protected $signature = 'Auth:install {--force}';
 
     /**
@@ -26,7 +26,7 @@ class Install extends Command
         $this->updateAuthConfig();
 
         /*here copy migrations*/
-       $this->comment('**********************************************');
+        $this->comment('**********************************************');
         $this->comment('**************Authentication*****************');
         $this->comment('**********************************************');
         $this->comment('');
@@ -39,7 +39,7 @@ class Install extends Command
     {
         copy(
             AUTH_PATH . '/resources/stubs/database/migrations/2015_09_25_191344_create_secusers_table.php',
-            database_path('migrations/' . date('Y_m_d_His') .'create_secusers_table.php')
+            database_path('migrations/' . date('Y_m_d_His') .'_create_secusers_table.php')
         );
     }
 
@@ -57,16 +57,8 @@ class Install extends Command
         ));
 
         file_put_contents($path, str_replace(
-            'App\User::class', 'Alfredoem\Authentication\SecUser', file_get_contents($path)
+            'App\User::class', 'Alfredoem\Authentication\SecUser::class', file_get_contents($path)
         ));
     }
-
-
-
-
-
-
-
-
 
 }

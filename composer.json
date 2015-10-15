@@ -1,6 +1,6 @@
 {
     "name" : "alfredoem/authentication",
-    "description": "Basic Auth for Laravel Framework",
+    "description": "Basic Authentication & Register for Laravel Framework",
     "keywords": [
         "alfredoem",
         "laravel",

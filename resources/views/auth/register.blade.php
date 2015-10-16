@@ -5,55 +5,78 @@
 
 @endsection
 
+@section('styles')
+<style>
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+</style>
+@endsection
+
 <!-- Main Content -->
 @section('content')
-	<div class="container-fluid">
+<div class="container">
+  <div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+          <form class="form-horizontal" method="POST" action="{{url('/register')}}">
+          {!! csrf_field() !!}
+          <fieldset>
+            <div id="legend">
+              <h2 class="form-signin-heading">Register</h2>
+            </div>
+            @include('Auth::common.errors', ['form' => 'default'])
+            <div class="control-group">
+              <label class="control-label" for="firstName">First name</label>
+              <div class="controls">
+                <input type="text" id="firstName" name="firstName" class="form-control input-lg">
+                <p class="help-block">Please provide your First name</p>
+              </div>
+            </div>
 
-		<!-- Basic Information -->
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-default">
-                	<div class="panel-heading">Register</div>
-                	<div class="panel-body">
-                	@include('Auth::common.errors', ['form' => 'default'])
+            <div class="control-group">
+              <label class="control-label" for="lastName">Last name</label>
+              <div class="controls">
+                <input type="text" id="lastName" name="lastName" class="form-control input-lg">
+                <p class="help-block">Please provide your Last name</p>
+              </div>
+            </div>
 
-                		<form method="POST" action="{{url('/register')}}">
-                            {!! csrf_field() !!}
+            <div class="control-group">
+              <label class="control-label" for="email">E-mail</label>
+              <div class="controls">
+                <input type="email" id="email" name="email" class="form-control input-lg">
+                <p class="help-block">Please provide your E-mail</p>
+              </div>
+            </div>
 
-                            <div class="form-group">
-                                First Name
-                                <input class="form-control" type="text" name="firstName" value="{{ old('firstName') }}">
-                            </div>
+            <div class="control-group">
+              <label class="control-label" for="password">Password</label>
+              <div class="controls">
+                <input type="password" id="password" name="password" class="form-control input-lg">
+                <p class="help-block">Password should be at least 6 characters</p>
+              </div>
+            </div>
 
-                            <div class="form-group">
-                                Last Name
-                                <input class="form-control" type="text" name="lastName" value="{{ old('lastName') }}">
-                            </div>
+            <div class="control-group">
+              <label class="control-label" for="password_confirm">Password (Confirm)</label>
+              <div class="controls">
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control input-lg">
+                <p class="help-block">Please confirm password</p>
+              </div>
+            </div>
 
-                            <div class="form-group">
-                                Email
-                                <input class="form-control" type="email" name="email" value="{{ old('email') }}">
-                            </div>
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
 
-                            <div class="form-group">
-                                Password
-                                <input class="form-control" type="password" name="password">
-                            </div>
-
-                            <div class="form-group">
-                                Confirm Password
-                                <input class="form-control" type="password" name="password_confirmation">
-                            </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Register</button>
-                            </div>
-                        </form>
-                	</div>
-                </div>
-
-			</div>
-		</div>
-
-	</div>
+    </div>
+  </div>
+</div>
 @endsection

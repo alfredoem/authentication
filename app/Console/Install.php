@@ -23,6 +23,7 @@ class Install extends Command
     public function handle()
     {
         $this->installMigrations();
+        $this->installMiddleware();
         $this->updateAuthConfig();
 
         // here copy migrations
@@ -34,8 +35,8 @@ class Install extends Command
             (new Process('php artisan migrate', base_path()))->setTimeout(null)->run();
         }
 
-        (new Process('php artisan vendor:publish --tag=public --force', base_path()))->setTimeout(null)->run();
-
+        $this->publishStyles();
+        $this->displayPostInstallationNotes();
     }
 
     protected function InstallMigrations()
@@ -62,6 +63,24 @@ class Install extends Command
         file_put_contents($path, str_replace(
             'App\User::class', 'Alfredoem\Authentication\SecUser::class', file_get_contents($path)
         ));
+    }
+
+    protected function publishStyles()
+    {
+        (new Process('php artisan vendor:publish --tag=public --force', base_path()))->setTimeout(null)->run();
+    }
+
+    protected function installMiddleware()
+    {
+        copy(
+            AUTH_PATH . '/resources/stubs/app/Http/Middleware/Authenticate.php',
+            app_path('Http/Middleware/Authenticate.php')
+        );
+    }
+
+    protected function displayPostInstallationNotes()
+    {
+        $this->line('<info>✔ Feel Good Inc. </info>');
     }
 
 }

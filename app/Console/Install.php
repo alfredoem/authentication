@@ -25,7 +25,7 @@ class Install extends Command
         $this->installMigrations();
         $this->updateAuthConfig();
 
-        /*here copy migrations*/
+        // here copy migrations
         $this->comment('**********************************************');
         $this->comment('**************Authentication*****************');
         $this->comment('**********************************************');
@@ -33,6 +33,9 @@ class Install extends Command
         if ($this->option('force') || $this->confirm('Would you like to run your database migrations?', 'yes')) {
             (new Process('php artisan migrate', base_path()))->setTimeout(null)->run();
         }
+
+        (new Process('php artisan vendor:publish --tag=public --force', base_path()))->setTimeout(null)->run();
+        
     }
 
     protected function InstallMigrations()

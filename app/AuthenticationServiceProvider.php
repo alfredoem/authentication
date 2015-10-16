@@ -27,6 +27,8 @@ class AuthenticationServiceProvider extends ServiceProvider
         });
 
         $this->defineResources();
+        $this->defineAssets();
+
     }
 
     protected function defineRoutes()
@@ -35,7 +37,7 @@ class AuthenticationServiceProvider extends ServiceProvider
             $router = app('router');
 
             $router->group(['namespace' => 'Alfredoem\Authentication\Http\Controllers'], function($router) {
-               require __DIR__ . '/Http/routes.php';
+                require __DIR__ . '/Http/routes.php';
             });
         }
     }
@@ -53,6 +55,13 @@ class AuthenticationServiceProvider extends ServiceProvider
                 AUTH_PATH . '/resources/views' => base_path('resources/views/vendor/Authentication'),
             ]);
         }
+    }
+
+    public function defineAssets()
+    {
+        $this->publishes([
+            AUTH_PATH.'/public/css' => public_path('css/alfredoem/authentication/'),
+        ], 'public');
     }
 
     public function register()

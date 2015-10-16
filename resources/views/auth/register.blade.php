@@ -1,18 +1,7 @@
 @extends('Auth::layouts.auth')
 
-<!-- Scripts -->
-@section('scripts')
-
-@endsection
-
-@section('styles')
-<style>
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
-}
-</style>
+@section('style')
+    <link rel="stylesheet" href="{{asset('css/alfredoem/authentication/register.css')}}"/>
 @endsection
 
 <!-- Main Content -->
@@ -30,7 +19,7 @@ body {
             <div class="control-group">
               <label class="control-label" for="firstName">First name</label>
               <div class="controls">
-                <input type="text" id="firstName" name="firstName" class="form-control input-lg">
+                <input type="text" id="firstName" name="firstName" class="form-control input-lg" value="{{ old('firstName') }}">
                 <p class="help-block">Please provide your First name</p>
               </div>
             </div>
@@ -38,7 +27,7 @@ body {
             <div class="control-group">
               <label class="control-label" for="lastName">Last name</label>
               <div class="controls">
-                <input type="text" id="lastName" name="lastName" class="form-control input-lg">
+                <input type="text" id="lastName" name="lastName" class="form-control input-lg" value="{{ old('lastName') }}">
                 <p class="help-block">Please provide your Last name</p>
               </div>
             </div>
@@ -46,7 +35,7 @@ body {
             <div class="control-group">
               <label class="control-label" for="email">E-mail</label>
               <div class="controls">
-                <input type="email" id="email" name="email" class="form-control input-lg">
+                <input type="email" id="email" name="email" class="form-control input-lg" value="{{ old('email') }}">
                 <p class="help-block">Please provide your E-mail</p>
               </div>
             </div>
@@ -80,3 +69,5 @@ body {
   </div>
 </div>
 @endsection
+
+@section('script')@endsection

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     @include('Auth::layouts.common.head')
+
+    @yield('style')
 </head>
 <body>
     <!-- Vue App For Spark Screens -->
@@ -14,7 +16,7 @@
         <!-- Footer -->
 
         <!-- JavaScript Application -->
-
+        @yield('script')
     </div>
 </body>
 </html>

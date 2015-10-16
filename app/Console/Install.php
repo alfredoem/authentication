@@ -35,7 +35,7 @@ class Install extends Command
         }
 
         (new Process('php artisan vendor:publish --tag=public --force', base_path()))->setTimeout(null)->run();
-        
+
     }
 
     protected function InstallMigrations()

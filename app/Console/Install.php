@@ -28,7 +28,7 @@ class Install extends Command
 
         // here copy migrations
         $this->comment('**********************************************');
-        $this->comment('**************Authentication*****************');
+        $this->comment('**************Authentication******************');
         $this->comment('**********************************************');
         $this->comment('');
         if ($this->option('force') || $this->confirm('Would you like to run your database migrations?', 'yes')) {
@@ -80,6 +80,8 @@ class Install extends Command
 
     protected function displayPostInstallationNotes()
     {
+        $this->line('<info>Default user</info>');
+        $this->line('<info>admin@shinra.com:admin</info>');
         $this->line('<info>✔ Feel Good Inc. </info>');
     }
 

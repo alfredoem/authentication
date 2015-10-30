@@ -24,6 +24,13 @@ class CreateSecUsersTable extends Migration
             $table->tinyInteger('status', false);
             $table->rememberToken();
         });
+
+        DB::table('SecUsers')->insert([
+            'firstName' => 'Cloud',
+            'lastName'  => 'Strife',
+            'email' => 'admin@shinra.com',
+            'password' => bcrypt('admin'),
+        ]);
     }
 
     /**
